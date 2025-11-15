@@ -18,7 +18,7 @@ body {
   padding: 0;
 
   color: #fff;
- background: url(mainsecbg.webp) center center / cover no-repeat fixed;  position: relative;
+ background: black!important;
   overflow-x: hidden;
   z-index: 1;
 }
