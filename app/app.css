@@ -1,0 +1,402 @@
+
+/* Basic global styles */
+body {
+  margin: 0;
+
+  font-family: "Sofia Pro", Poppins, sans-serif;
+font-size: 20px;
+font-weight: 300;
+line-height: 24px;
+  color: #f8fafc;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  color: #fff;
+  background: url(mainsecbg.webp) center center / cover no-repeat fixed;
+  position: relative;
+  overflow-x: hidden;
+  z-index: 1;
+}
+
+/* 🖤 Add dark overlay */
+body::before {
+  content: "";
+  position: fixed; /* fixed ensures it covers the entire viewport */
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55); /* Adjust opacity */
+  z-index: -1; /* Keep overlay behind all content */
+}
+
+img.logo-image {
+  width: 12%;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  backdrop-filter: blur(12px);
+  background: linear-gradient(135deg, rgb(255 255 255 / 5%), rgb(255 255 255 / 0%));
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.header:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  color: #fff;
+  font-family: "Sofia Pro", Poppins, sans-serif;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  gap: 35px;
+  border: 1.5px solid #9dee6a;
+  padding: 8px 25px;
+
+}
+.nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 400!important;
+  font-size: 14px;
+  position: relative;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+}
+
+/* Fancy underline hover effect */
+.nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #9cee69;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover {
+  color:  #9cee69;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+
+
+.topbar {
+  width: 100%;
+  height: 40px;
+  background-color: #9dee6a;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1100;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* 🌈 Outer container for the marquee track */
+.marquee {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 200%; /* doubled for looping */
+}
+
+/* 🌀 Inner scrolling content */
+.marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  animation: marquee-scroll 20s linear infinite;
+}
+
+/* ✍️ Repeated text spans */
+.marquee-content span {
+  font-size: 15px;
+  font-weight: 400;
+  color: #111;
+  letter-spacing: 0.5px;
+  padding: 0 2rem;
+  font-family: "Sofia Pro", Poppins, sans-serif;
+}
+
+/* 🎬 Keyframes for continuous motion */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 🖐️ Optional: pause when hovered */
+.topbar:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+/* ============= HAMBURGER BUTTON ============= */
+.hamburger {
+  width: 30px;
+  height: 22px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 2000;
+}
+
+.hamburger span {
+  display: block;
+  height: 4px;
+  background: #fff;
+  border-radius: 4px;
+  transition: 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Hide Desktop nav in mobile */
+.desktop-nav {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* ============= MOBILE MENU ============= */
+.mobile-nav {
+  position: fixed;
+  top: 90px;
+  left: 0;
+  width: 100%;
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 25px;
+  transform: translateY(-200%);
+  transition: 0.4s ease-in-out;
+  z-index: 1500;
+}
+
+.mobile-nav a {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.mobile-nav.open {
+  transform: translateY(0);
+}
+
+/* Fix header on mobile */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 25px;
+    top: 40px;
+  }
+  img.logo-image {
+    width: 40%;
+}
+h1.title {
+  line-height: 1em;
+}
+}
+
+
+
+.faq-section {
+  padding: 20px 80px 80px 80px;
+  color: #fff;
+
+
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+
+
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #9cee69;
+  margin-bottom: 50px;
+}
+
+.faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  padding: 20px 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.faq-question {
+  font-size: 22px;
+  font-weight: 300!important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.faq-toggle {
+  font-size: 1.4rem;
+  color: #9cee69;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-toggle {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 500px;
+  margin-top: 10px;
+}
+
+.faq-answer p {
+  color: #ccc;
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+.faq-section {
+  padding: 20px 20px 20px 20px;
+  color: #fff;
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+}
+h2.faq-title {
+  line-height: 1em;
+}
+}
+
+.call-sidebar {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  align-items: center;
+  z-index: 99999;
+  text-decoration: none;
+}
+
+/* Blue circular icon */
+@keyframes callWave {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(18deg); }
+  30% { transform: rotate(-14deg); }
+  45% { transform: rotate(18deg); }
+  60% { transform: rotate(-8deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.call-sidebar .icon-box {
+  background: #ffffff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: white;
+  margin-right: -8px;
+  z-index: 2;
+
+  /* 👇 Add waving animation */
+  transform-origin: 50% 10%;
+  animation: callWave 2s infinite ease-in-out;
+}
+
+
+/* Yellow vertical label */
+.call-sidebar .text-box {
+  background: #9dee6a;
+  padding: 20px 8px;
+  border-radius: 10px 0px 0px 10px;
+  color: #000000;
+  font-weight: 400;
+  writing-mode: sideways-lr;
+  font-size: 15px;
+  letter-spacing: 1px;
+  border-style: solid;
+  box-shadow: 4px 3px 0px 0px rgb(255 255 255);
+}

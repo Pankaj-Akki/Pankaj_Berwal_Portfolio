@@ -1,0 +1,79 @@
+/* ⭐ ADDED OPENING ANIMATION */
+@keyframes slideInLeft {
+    from {
+      transform: translate(-60px, -50%); /* hidden left */
+      opacity: 0;
+    }
+    to {
+      transform: translate(0, -50%); /* visible */
+      opacity: 1;
+    }
+  }
+  
+  /* APPLY ANIMATION TO SIDEBAR */
+  .social-sidebar {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    animation: slideInLeft 0.6s ease-out forwards; /* ⭐ added */
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
+  }
+  
+  .social-item {
+    background: #9dee6a;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out, padding 0.3s ease;
+    border: 1px solid #9dee6a;
+    padding: 0;
+    border-style: solid;
+    box-shadow: 4px 3px 0px 0px rgb(255 255 255);
+}
+  
+  /* ICON ALWAYS VISIBLE */
+  .social-item svg {
+    color: #000 !important;
+    font-size: 20px;
+    z-index: 10;
+  }
+  
+  /* HIDE LABEL COMPLETELY BEFORE HOVER */
+  .social-item .label {
+    display: none;
+    white-space: nowrap;
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    font-size: 15px;
+    color: #333;
+    font-weight: 400;
+  }
+  
+  /* SHOW LABEL ON HOVER */
+  .social-item:hover {
+    width: 180px;
+    justify-content: flex-start;
+    padding-left: 15px;
+  }
+  
+  .social-item:hover .label {
+    display: inline;
+    opacity: 1;
+  }
+  
+  .social-item {
+    text-decoration: none !important;
+  }
+  
+  .social-item:hover {
+    text-decoration: none !important;
+  }
+  

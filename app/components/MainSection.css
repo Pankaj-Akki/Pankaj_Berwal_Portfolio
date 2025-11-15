@@ -1,0 +1,104 @@
+.main-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 75vh;
+  padding: 129px 50px 10px 80px;
+
+  color: #fff;
+  font-family: "Sofia Pro", Poppins, sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+/* 🌓 Overlay to darken background */
+
+
+  .intro {
+    max-width: 600px;
+  }
+  
+  .title {
+    font-size: 48px;
+    margin: 10px 0;
+    font-weight: 400;
+  }
+  
+  .highlight {
+    color: #9dee6a;
+    font-weight: 400;
+}
+  
+  .description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #d1d1d1;
+    margin-bottom: 30px;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .btn {
+    text-decoration: none;
+    padding: 14px 20px 8px 20px;
+
+    transition: all 0.3s ease;
+}
+  
+.btn.primary {
+  background-color: #9dee6a;
+  color: #000;
+  font-weight: 400;
+  font-size: 17px;
+  margin: 0px 0px 0px 0px;
+  border-style: solid;
+
+  box-shadow: 4px 3px 0px 0px rgb(255 255 255);
+}
+  
+  .btn.primary:hover {
+    background-color: #9dee6a;
+  }
+  
+  .btn.secondary {
+    border: 2px solid #9dee6a;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 17px;
+    margin: 0px 0px 0px 0px;
+    border-style: solid;
+
+    box-shadow: 4px 3px 0px 0px rgb(255 255 255);
+  }
+  
+  .btn.secondary:hover {
+    background-color: #9dee6a;
+    color: #000;
+  }
+  
+  .image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  h2.heading-one{
+    font-weight: 400;
+  }
+  .profile-image {
+    width: 60%;
+
+}
+@media (max-width: 768px) {
+.image-container {
+  margin-top: 4rem;
+}
+.main-section {
+
+  padding: 160px 20px 10px 20px;
+}
+
+}
