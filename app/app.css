@@ -18,8 +18,7 @@ body {
   padding: 0;
 
   color: #fff;
-  background: url(https://github.com/Pankaj-Akki/Pankaj_Berwal_Portfolio/blob/main/public/mainsecbg.webp) center center / cover no-repeat fixed;
-  position: relative;
+ background: url(mainsecbg.webp) center center / cover no-repeat fixed;  position: relative;
   overflow-x: hidden;
   z-index: 1;
 }
