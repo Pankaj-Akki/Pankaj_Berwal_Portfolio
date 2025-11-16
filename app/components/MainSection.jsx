@@ -64,13 +64,6 @@ export default function MainSection() {
           </div>
         </div>
 
-        <div className="image-container">
-          <img
-            src="/profile.png"
-            alt="Pankaj"
-            className="profile-image"
-          />
-        </div>
       </main>
 
       {/* Sections */}
