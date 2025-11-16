@@ -8,16 +8,16 @@ export default function SocialSidebar() {
 
    <a href="https://www.linkedin.com/in/pankaj-berwal-252447246" className="social-item" target="_blank">
         <FaLinkedinIn />
-        <span className="label">PankajBerwal_</span>
+        <span className="label">Pankaj Berwal</span>
       </a>
 
       <a href="https://www.instagram.com/pankajberwal_/" className="social-item" target="_blank">
         <FaInstagram />
-        <span className="label">Pankaj Berwal</span>
+        <span className="label">pankajberwal_</span>
       </a>
        <a href="mailto:developerpankaj30@gmail.com" className="social-item">
         <FaEnvelope />
-        <span className="label">developerpankaj</span>
+        <span className="label">developerpankaj30</span>
       </a>
     </div>
   );
