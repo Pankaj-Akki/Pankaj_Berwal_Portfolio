@@ -4,19 +4,20 @@ import "./SocialSidebar.css";
 export default function SocialSidebar() {
   return (
     <div className="social-sidebar">
-      <a href="#" className="social-item">
-        <FaFacebookF />
-        <span className="label">PankajBerwal_</span>
-      </a>
+     
 
-      <a href="#" className="social-item">
+   <a href="https://www.linkedin.com/in/pankaj-berwal-252447246" className="social-item" target="_blank">
         <FaLinkedinIn />
         <span className="label">PankajBerwal_</span>
       </a>
 
-      <a href="#" className="social-item">
+      <a href="https://www.instagram.com/pankajberwal_/" className="social-item" target="_blank">
         <FaInstagram />
-        <span className="label">PankajBerwal_</span>
+        <span className="label">Pankaj Berwal</span>
+      </a>
+       <a href="mailto:developerpankaj30@gmail.com" className="social-item">
+        <FaEnvelope />
+        <span className="label">developerpankaj</span>
       </a>
     </div>
   );
