@@ -1,4 +1,4 @@
-import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn, FaInstagram, FaEnvelope } from "react-icons/fa";
 import "./SocialSidebar.css";
 
 export default function SocialSidebar() {
