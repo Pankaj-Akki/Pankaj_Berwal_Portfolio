@@ -11,8 +11,8 @@
     z-index: 1;
 
     /* Background image added */
-    background: red url("https://raw.githubusercontent.com/Pankaj-Akki/Pankaj_Berwal_Portfolio/refs/heads/main/public/Untitled%20design.jpg") 
-                center center / cover no-repeat !important;
+    background: url("https://raw.githubusercontent.com/Pankaj-Akki/Pankaj_Berwal_Portfolio/refs/heads/main/public/Untitled%20design.jpg") 
+                center right / cover no-repeat !important;
 }
 
 
