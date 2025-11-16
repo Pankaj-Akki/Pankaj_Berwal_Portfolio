@@ -8,8 +8,8 @@ import "../components/MainSection.css"; // ✅ import MainSection styles
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Home | My App" },
-    { name: "description", content: "Welcome to my custom homepage!" },
+    { title: "Home | Portfolio" },
+    { name: "description", content: "Welcome to my Portfolio!" },
   ];
 }
 
