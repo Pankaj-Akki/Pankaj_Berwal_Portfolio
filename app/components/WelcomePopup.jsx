@@ -1,31 +1,14 @@
 import React, { useState, useEffect } from "react";
 
-/**
- * WelcomePopup
- * Props:
- *  - open: boolean (show/hide)
- *  - onClose: function to close popup
- *
- * Notes:
- *  - Uses mode: "no-cors" for fetch to Google Apps Script (public Web App).
- *  - Treats resolved fetch as success (Apps Script often blocks reading JSON due to CORS).
- */
 export default function WelcomePopup({ open, onClose }) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [purpose, setPurpose] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
-  const [statusMessage, setStatusMessage] = useState(""); // message text
-  const [statusType, setStatusType] = useState(""); // "success" | "error"
+  const [statusMessage, setStatusMessage] = useState("");
+  const [statusType, setStatusType] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
-  // show popup on mount if open is undefined usage
-  useEffect(() => {
-    if (open === undefined) {
-      // no prop usage: do nothing
-    }
-  }, [open]);
 
   const resetMessages = () => {
     setStatusMessage("");
@@ -67,32 +50,25 @@ export default function WelcomePopup({ open, onClose }) {
     };
 
     try {
-      // Use no-cors because Apps Script Web App responses are often blocked by CORS.
-      // In no-cors mode the response is opaque, so we cannot read JSON — but the request still reaches Apps Script.
       await fetch(
         "https://script.google.com/macros/s/AKfycbwsHsQh87mBGWjOn_1B5JLHLCYJTNsjHn3ZU5qdS9uS55-yYgaSfLCd63W-INnZqU7S/exec",
         {
           method: "POST",
           mode: "no-cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
         }
       );
 
-      // If fetch resolved without throwing -> assume success (Apps Script processed it)
       setStatusType("success");
       setStatusMessage("✔️ Submitted successfully!");
       setSubmitted(true);
 
-      // clear fields (optional)
       setFullName("");
       setEmail("");
       setPurpose("");
       setDescription("");
 
-      // auto-close after short delay
       setTimeout(() => {
         setStatusMessage("");
         setStatusType("");
@@ -100,7 +76,6 @@ export default function WelcomePopup({ open, onClose }) {
         onClose && onClose();
       }, 1400);
     } catch (err) {
-      // network-level failure
       console.error("Submit error:", err);
       setStatusType("error");
       setStatusMessage("❌ Network error. Please try again.");
@@ -113,6 +88,7 @@ export default function WelcomePopup({ open, onClose }) {
 
   return (
     <>
+      {/* ====================== FIXED + MERGED GLASS CSS ====================== */}
       <style>{`
         .popup-overlay {
           position: fixed;
@@ -123,60 +99,81 @@ export default function WelcomePopup({ open, onClose }) {
           justify-content: center;
           z-index: 9999;
         }
+
         .popup-box {
           width: 92%;
           max-width: 500px;
-    
-      
           padding: 22px;
-          box-shadow: 0 12px 36px rgba(0,0,0,0.28);
           position: relative;
+          border-radius: 12px;
+
+          -webkit-backdrop-filter: blur(12px)!important;
+          backdrop-filter: blur(12px)!important;
+
+          background: linear-gradient(135deg, #ffffff0d, #fff0)!important;
+          border: 1px solid rgba(255, 255, 255, .18)!important;
+          box-shadow: 0 8px 25px #00000040!important;
         }
-        .popup-box {
-    -webkit-backdrop-filter: blur(12px)!important;
-    backdrop-filter: blur(12px)!important;
-    background: linear-gradient(135deg, #ffffff0d, #fff0)!important;
-    box-shadow: 0 8px 25px #00000040!important;
-    border: 1px solid rgba(255, 255, 255, .18)!important;
-    z-index: 1000!important;
-}
+
         .popup-box h2 {
           margin: 0 0 12px 0;
           text-align: center;
           font-size: 20px;
           font-weight: 400!important;
+          color: #fff!important;
         }
+
         .inline-msg {
           text-align: center;
           margin-bottom: 10px;
           font-weight: 400!important;
         }
+
         .inline-msg.success { color: #9cee69!important; }
         .inline-msg.error { color: #9cee69!important; }
+
         .popup-box input,
         .popup-box select,
         .popup-box textarea {
           width: 100%;
           padding: 10px 12px;
           margin: 8px 0 12px 0;
-      
-          border: 1px solid #ccc;
-          font-size: 14px;
-          box-sizing: border-box;
+          background: rgba(255,255,255,0.15)!important;
+          border: 1px solid rgba(255,255,255,0.35)!important;
+          border-radius: 8px!important;
+          color: #fff!important;
+          outline: none!important;
         }
-        .popup-box textarea { min-height: 90px; resize: vertical; }
+
+        .popup-box input::placeholder,
+        .popup-box textarea::placeholder {
+          color: #ffffff8a!important;
+        }
+
+        .popup-box select option {
+          background: #0f0f0f!important;
+          color: #fff!important;
+        }
+
+        .popup-box textarea { 
+          min-height: 90px; 
+          resize: vertical; 
+        }
+
         .submit-btn {
           width: 100%;
           padding: 12px;
           background: #164DB3!important;
-          color: #fff;
-          border: none;
-          border-style: solid!important;
-    box-shadow: 4px 3px #fff!important;
+          color: #fff!important;
+          border: 1px solid #fff!important;
+          box-shadow: 4px 3px #fff!important;
           font-weight: 400!important;
           cursor: pointer;
+          border-radius: 8px!important;
         }
+
         .submit-btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+
         .close-btn {
           position: absolute;
           top: 10px;
@@ -185,9 +182,11 @@ export default function WelcomePopup({ open, onClose }) {
           background: transparent;
           border: none;
           cursor: pointer;
+          color: #fff!important;
         }
       `}</style>
 
+      {/* ====================== POPUP UI ====================== */}
       <div className="popup-overlay" role="dialog" aria-modal="true">
         <div className="popup-box">
           <button
@@ -196,7 +195,6 @@ export default function WelcomePopup({ open, onClose }) {
               resetMessages();
               onClose && onClose();
             }}
-            aria-label="Close popup"
           >
             ×
           </button>
@@ -204,15 +202,11 @@ export default function WelcomePopup({ open, onClose }) {
           <h2>Connect With Me</h2>
 
           {statusMessage && (
-            <div
-              className={`inline-msg ${statusType === "success" ? "success" : "error"}`}
-              role="status"
-            >
+            <div className={`inline-msg ${statusType === "success" ? "success" : "error"}`}>
               {statusMessage}
             </div>
           )}
 
-          {/* Hide form after submission success */}
           {!submitted ? (
             <form onSubmit={handleSubmit} noValidate>
               <input
@@ -245,7 +239,6 @@ export default function WelcomePopup({ open, onClose }) {
                 <option value="Other">Other</option>
               </select>
 
-              {/* Show description only when Other is selected */}
               {purpose === "Other" && (
                 <textarea
                   name="description"
