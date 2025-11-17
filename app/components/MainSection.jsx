@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import WelcomePopup from "./WelcomePopup";
-import JourneySection from "./JourneySection";
 import SkillsSection from "./SkillsSection";
 import FAQSection from "../components/FAQSection";
 import Footer from "../components/Footer";
