@@ -5,10 +5,12 @@ import Footer from "../components/Footer";
 import CallSidebar from "../components/CallSidebar";
 import SocialSidebar from "../components/SocialSidebar";
 import "./JourneySection.css";
+import WelcomePopup from "../components/WelcomePopup";
 
 export default function MainSection() {
   return (
     <>
+      <WelcomePopup />
       <CallSidebar />
       <SocialSidebar />
 
