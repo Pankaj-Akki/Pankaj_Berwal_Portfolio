@@ -123,50 +123,80 @@ export default function WelcomePopup({ open, onClose }) {
           justify-content: center;
           z-index: 9999;
         }
+
         .popup-box {
           width: 92%;
-          max-width: 460px;
-          background: #fff;
-          border-radius: 12px;
+          max-width: 500px;
           padding: 22px;
-          box-shadow: 0 12px 36px rgba(0,0,0,0.28);
+          border-radius: 12px;
           position: relative;
+
+          /* Your blur + glass effect */
+          -webkit-backdrop-filter: blur(12px)!important;
+          backdrop-filter: blur(12px)!important;
+          background: linear-gradient(135deg, #ffffff0d, #fff0)!important;
+          box-shadow: 0 8px 25px #00000040!important;
+          border: 1px solid rgba(255, 255, 255, .18)!important;
         }
+
         .popup-box h2 {
           margin: 0 0 12px 0;
           text-align: center;
           font-size: 20px;
+          font-weight: 400!important;
         }
+
         .inline-msg {
           text-align: center;
           margin-bottom: 10px;
-          font-weight: 600;
+          font-weight: 400!important;
         }
-        .inline-msg.success { color: #0a8a2b; }
-        .inline-msg.error { color: #d23f3f; }
-        .popup-box input,
-        .popup-box select,
-        .popup-box textarea {
-          width: 100%;
-          padding: 10px 12px;
-          margin: 8px 0 12px 0;
-          border-radius: 8px;
-          border: 1px solid #ccc;
-          font-size: 14px;
-          box-sizing: border-box;
-        }
+        .inline-msg.success { color: #9cee69!important; }
+        .inline-msg.error { color: #ff4d4d!important; }
+
+      .popup-box input,
+.popup-box select,
+.popup-box textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 8px 0 12px 0;
+
+   -webkit-backdrop-filter: blur(12px)!important;
+          backdrop-filter: blur(12px)!important;
+          background: linear-gradient(135deg, #ffffff0d, #fff0)!important;
+          box-shadow: 0 8px 25px #00000040!important;
+          border: 1px solid rgba(255, 255, 255, .18)!important;
+  color: #fff !important;             /* BLACK TEXT */
+  border: 1px solid #fff !important;   /* WHITE BORDER */
+
+  font-size: 14px;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+
+input::placeholder {
+    color: #ffffff !important;
+}
         .popup-box textarea { min-height: 90px; resize: vertical; }
+
+        /* FINAL UPDATED BUTTON */
         .submit-btn {
           width: 100%;
           padding: 12px;
-          background: #164DB3;
-          color: #fff;
-          border: none;
-          border-radius: 8px;
-          font-weight: 600;
+          background: #9cee69 !important;     /* 💚 GREEN */
+          color: #000 !important;              /* 🖤 BLACK TEXT */
+          border: 1px solid #fff !important;
+          box-shadow: 4px 3px #fff !important;
+          font-weight: 600 !important;
           cursor: pointer;
+          border-radius: 8px !important;
         }
-        .submit-btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+
+        .submit-btn[disabled] {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+
         .close-btn {
           position: absolute;
           top: 10px;
@@ -175,8 +205,10 @@ export default function WelcomePopup({ open, onClose }) {
           background: transparent;
           border: none;
           cursor: pointer;
+          color: #fff;
         }
       `}</style>
+
 
       <div className="popup-overlay" role="dialog" aria-modal="true">
         <div className="popup-box">
