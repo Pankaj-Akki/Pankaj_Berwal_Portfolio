@@ -125,41 +125,32 @@ export default function WelcomePopup({ open, onClose }) {
         }
         .popup-box {
           width: 92%;
-          max-width: 500px;
-    
-      
+          max-width: 460px;
+          background: #fff;
+          border-radius: 12px;
           padding: 22px;
           box-shadow: 0 12px 36px rgba(0,0,0,0.28);
           position: relative;
         }
-        .popup-box {
-    -webkit-backdrop-filter: blur(12px)!important;
-    backdrop-filter: blur(12px)!important;
-    background: linear-gradient(135deg, #ffffff0d, #fff0)!important;
-    box-shadow: 0 8px 25px #00000040!important;
-    border: 1px solid rgba(255, 255, 255, .18)!important;
-    z-index: 1000!important;
-}
         .popup-box h2 {
           margin: 0 0 12px 0;
           text-align: center;
           font-size: 20px;
-          font-weight: 400!important;
         }
         .inline-msg {
           text-align: center;
           margin-bottom: 10px;
-          font-weight: 400!important;
+          font-weight: 600;
         }
-        .inline-msg.success { color: #9cee69!important; }
-        .inline-msg.error { color: #9cee69!important; }
+        .inline-msg.success { color: #0a8a2b; }
+        .inline-msg.error { color: #d23f3f; }
         .popup-box input,
         .popup-box select,
         .popup-box textarea {
           width: 100%;
           padding: 10px 12px;
           margin: 8px 0 12px 0;
-      
+          border-radius: 8px;
           border: 1px solid #ccc;
           font-size: 14px;
           box-sizing: border-box;
@@ -168,12 +159,11 @@ export default function WelcomePopup({ open, onClose }) {
         .submit-btn {
           width: 100%;
           padding: 12px;
-          background: #164DB3!important;
+          background: #164DB3;
           color: #fff;
           border: none;
-          border-style: solid!important;
-    box-shadow: 4px 3px #fff!important;
-          font-weight: 400!important;
+          border-radius: 8px;
+          font-weight: 600;
           cursor: pointer;
         }
         .submit-btn[disabled] { opacity: 0.6; cursor: not-allowed; }
