@@ -143,7 +143,7 @@ export default function WelcomePopup({ open, onClose }) {
           background: linear-gradient(135deg, #ffffff0d, #fff0)!important;
           box-shadow: 0 8px 25px #00000040!important;
           border: 1px solid rgba(255, 255, 255, .18)!important;
-  color: #fff !important;              /* BLACK TEXT */
+  color: #757575 !important !important;              /* BLACK TEXT */
   border: 1px solid #fff !important;   /* WHITE BORDER */
 
   font-size: 14px;
