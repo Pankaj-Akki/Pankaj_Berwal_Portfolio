@@ -160,17 +160,17 @@ export default function WelcomePopup({ open, onClose }) {
           resize: vertical; 
         }
 
-        .submit-btn {
-          width: 100%;
-          padding: 12px;
-          background: #164DB3!important;
-          color: #fff!important;
-          border: 1px solid #fff!important;
-          box-shadow: 4px 3px #fff!important;
-          font-weight: 400!important;
-          cursor: pointer;
-          border-radius: 8px!important;
-        }
+     .submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #9dee6a !important;
+    color: #000000;
+    border: none;
+    border-style: solid!important;
+    box-shadow: 4px 3px #fff!important;
+    font-weight: 400!important;
+    cursor: pointer;
+}
 
         .submit-btn[disabled] { opacity: 0.6; cursor: not-allowed; }
 
