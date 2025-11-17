@@ -343,6 +343,10 @@ h1.title {
 h2.faq-title {
   line-height: 1em;
 }
+  .social-sidebar {
+
+    z-index: 1!important;
+}
 }
 
 .call-sidebar {
