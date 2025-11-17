@@ -128,7 +128,7 @@ export default function WelcomePopup({ open, onClose }) {
           width: 92%;
           max-width: 500px;
           padding: 22px;
-          border-radius: 12px;
+         
           position: relative;
 
           /* Your blur + glass effect */
@@ -171,7 +171,7 @@ export default function WelcomePopup({ open, onClose }) {
 
   font-size: 14px;
   box-sizing: border-box;
-  border-radius: 6px;
+
 }
 
 input::placeholder {
@@ -189,7 +189,7 @@ input::placeholder {
           box-shadow: 4px 3px #fff !important;
           font-weight: 600 !important;
           cursor: pointer;
-          border-radius: 8px !important;
+      
         }
 
         .submit-btn[disabled] {
