@@ -10,6 +10,8 @@ export default function WelcomePopup({ open, onClose }) {
   const [statusType, setStatusType] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
+  useEffect(() => {}, [open]);
+
   const resetMessages = () => {
     setStatusMessage("");
     setStatusType("");
@@ -46,7 +48,7 @@ export default function WelcomePopup({ open, onClose }) {
       fullName: fullName.trim(),
       email: email.trim(),
       purpose,
-      description: description.trim() || "",
+      description: description.trim(),
     };
 
     try {
@@ -88,7 +90,6 @@ export default function WelcomePopup({ open, onClose }) {
 
   return (
     <>
-      {/* ====================== FIXED + MERGED GLASS CSS ====================== */}
       <style>{`
         .popup-overlay {
           position: fixed;
@@ -104,15 +105,15 @@ export default function WelcomePopup({ open, onClose }) {
           width: 92%;
           max-width: 500px;
           padding: 22px;
-          position: relative;
           border-radius: 12px;
+          position: relative;
 
+          /* Your blur + glass effect */
           -webkit-backdrop-filter: blur(12px)!important;
           backdrop-filter: blur(12px)!important;
-
           background: linear-gradient(135deg, #ffffff0d, #fff0)!important;
-          border: 1px solid rgba(255, 255, 255, .18)!important;
           box-shadow: 0 8px 25px #00000040!important;
+          border: 1px solid rgba(255, 255, 255, .18)!important;
         }
 
         .popup-box h2 {
@@ -120,7 +121,6 @@ export default function WelcomePopup({ open, onClose }) {
           text-align: center;
           font-size: 20px;
           font-weight: 400!important;
-          color: #fff!important;
         }
 
         .inline-msg {
@@ -128,9 +128,8 @@ export default function WelcomePopup({ open, onClose }) {
           margin-bottom: 10px;
           font-weight: 400!important;
         }
-
         .inline-msg.success { color: #9cee69!important; }
-        .inline-msg.error { color: #9cee69!important; }
+        .inline-msg.error { color: #ff4d4d!important; }
 
         .popup-box input,
         .popup-box select,
@@ -138,41 +137,31 @@ export default function WelcomePopup({ open, onClose }) {
           width: 100%;
           padding: 10px 12px;
           margin: 8px 0 12px 0;
-          background: rgba(255,255,255,0.15)!important;
-          border: 1px solid rgba(255,255,255,0.35)!important;
-          border-radius: 8px!important;
-          color: #fff!important;
-          outline: none!important;
+          border: 1px solid #ccc;
+          font-size: 14px;
+          box-sizing: border-box;
+          border-radius: 6px;
         }
 
-        .popup-box input::placeholder,
-        .popup-box textarea::placeholder {
-          color: #ffffff8a!important;
+        .popup-box textarea { min-height: 90px; resize: vertical; }
+
+        /* FINAL UPDATED BUTTON */
+        .submit-btn {
+          width: 100%;
+          padding: 12px;
+          background: #9cee69 !important;     /* 💚 GREEN */
+          color: #000 !important;              /* 🖤 BLACK TEXT */
+          border: 1px solid #fff !important;
+          box-shadow: 4px 3px #fff !important;
+          font-weight: 600 !important;
+          cursor: pointer;
+          border-radius: 8px !important;
         }
 
-        .popup-box select option {
-          background: #0f0f0f!important;
-          color: #fff!important;
+        .submit-btn[disabled] {
+          opacity: 0.6;
+          cursor: not-allowed;
         }
-
-        .popup-box textarea { 
-          min-height: 90px; 
-          resize: vertical; 
-        }
-
-     .submit-btn {
-    width: 100%;
-    padding: 12px;
-    background: #9dee6a !important;
-    color: #000000;
-    border: none;
-    border-style: solid!important;
-    box-shadow: 4px 3px #fff!important;
-    font-weight: 400!important;
-    cursor: pointer;
-}
-
-        .submit-btn[disabled] { opacity: 0.6; cursor: not-allowed; }
 
         .close-btn {
           position: absolute;
@@ -182,27 +171,18 @@ export default function WelcomePopup({ open, onClose }) {
           background: transparent;
           border: none;
           cursor: pointer;
-          color: #fff!important;
+          color: #fff;
         }
       `}</style>
 
-      {/* ====================== POPUP UI ====================== */}
-      <div className="popup-overlay" role="dialog" aria-modal="true">
+      <div className="popup-overlay">
         <div className="popup-box">
-          <button
-            className="close-btn"
-            onClick={() => {
-              resetMessages();
-              onClose && onClose();
-            }}
-          >
-            ×
-          </button>
+          <button className="close-btn" onClick={onClose}>×</button>
 
           <h2>Connect With Me</h2>
 
           {statusMessage && (
-            <div className={`inline-msg ${statusType === "success" ? "success" : "error"}`}>
+            <div className={`inline-msg ${statusType}`}>
               {statusMessage}
             </div>
           )}
@@ -215,7 +195,6 @@ export default function WelcomePopup({ open, onClose }) {
                 placeholder="Full Name"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                required
               />
 
               <input
@@ -224,14 +203,12 @@ export default function WelcomePopup({ open, onClose }) {
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
               />
 
               <select
                 name="purpose"
                 value={purpose}
                 onChange={(e) => setPurpose(e.target.value)}
-                required
               >
                 <option value="">Select Purpose</option>
                 <option value="Hiring">Hiring</option>
@@ -245,7 +222,6 @@ export default function WelcomePopup({ open, onClose }) {
                   placeholder="Describe your purpose"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  required
                 />
               )}
 
@@ -254,8 +230,8 @@ export default function WelcomePopup({ open, onClose }) {
               </button>
             </form>
           ) : (
-            <div style={{ textAlign: "center", padding: "6px 0", color: "#0a8a2b", fontWeight: 600 }}>
-              Thanks — closing...
+            <div style={{ textAlign: "center", padding: "6px 0", color: "#9cee69", fontWeight: 600 }}>
+              Submitted — closing...
             </div>
           )}
         </div>
