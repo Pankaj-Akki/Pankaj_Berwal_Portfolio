@@ -8,11 +8,15 @@ import CallSidebar from "../components/CallSidebar";
 import SocialSidebar from "../components/SocialSidebar";
 import "./JourneySection.css";
 
-
 export default function MainSection() {
+  // ✅ Popup state (You forgot this earlier)
+  const [open, setOpen] = useState(true);
+
   return (
     <>
+      {/* ✅ Popup at top */}
       <WelcomePopup open={open} onClose={() => setOpen(false)} />
+
       <CallSidebar />
       <SocialSidebar />
 
@@ -54,7 +58,7 @@ export default function MainSection() {
 
           <div className="buttons">
 
-            {/* ✅ CV Download Button (opens PDF in new tab) */}
+            {/* ✅ CV Download Button */}
             <a
               href="/PANKAJ-BERWAL-CV-2026.pdf"
               className="btn primary"
@@ -67,7 +71,6 @@ export default function MainSection() {
             <a href="tel:9138427099" className="btn secondary">Contact Me</a>
           </div>
         </div>
-
       </main>
 
       {/* Sections */}
