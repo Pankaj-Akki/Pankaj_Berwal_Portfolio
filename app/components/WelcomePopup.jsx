@@ -1,167 +1,114 @@
 import React, { useState } from "react";
 
 export default function WelcomePopup({ open, onClose }) {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    purpose: "",
-    description: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [purpose, setPurpose] = useState("Hiring");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState(""); // success | error
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setStatus("");
+    setMessage("");
 
-    const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbwsHsQh87mBGWjOn_1B5JLHLCYJTNsjHn3ZU5qdS9uS55-yYgaSfLCd63W-INnZqU7S/exec",
-      {
-        method: "POST",
-        body: JSON.stringify(formData),
+    try {
+      const res = await fetch(
+        "https://script.google.com/macros/s/AKfycbwsHsQh87mBGWjOn_1B5JLHLCYJTNsjHn3ZU5qdS9uS55-yYgaSfLCd63W-INnZqU7S/exec",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            fullName,
+            email,
+            purpose,
+          }),
+        }
+      );
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus("success");
+        setMessage("✔️ Submitted successfully!");
+        
+        // Optionally auto-close popup after success
+        setTimeout(() => {
+          onClose();
+        }, 1200);
+
+        setFullName("");
+        setEmail("");
+        setPurpose("Hiring");
+      } else {
+        setStatus("error");
+        setMessage("❌ Something went wrong. Please try again.");
       }
-    );
 
-    const result = await response.json();
-
-    if (result.success) {
-      alert("Your form has been submitted!");
-      onClose();
-    } else {
-      alert("Submission failed. Try again.");
+    } catch (error) {
+      setStatus("error");
+      setMessage("❌ Network error, try again.");
     }
+
+    setLoading(false);
   };
 
   if (!open) return null;
 
   return (
-    <>
-      {/* INLINE CSS */}
-      <style>{`
-        .popup-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0,0,0,0.6);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 9999;
-        }
+    <div className="popup-overlay">
+      <div className="popup-box">
+        <button className="close-btn" onClick={onClose}>×</button>
 
-        .popup-box {
-          width: 400px;
-          background: #fff;
-          padding: 25px;
-          border-radius: 14px;
-          position: relative;
-          animation: fadeIn 0.3s ease;
-        }
+        <h2>Welcome 👋</h2>
 
-        @keyframes fadeIn {
-          from { transform: scale(0.8); opacity: 0; }
-          to { transform: scale(1); opacity: 1; }
-        }
+        {/* Inline message */}
+        {message && (
+          <p
+            style={{
+              color: status === "success" ? "green" : "red",
+              marginTop: "8px",
+              marginBottom: "10px",
+              fontSize: "14px",
+            }}
+          >
+            {message}
+          </p>
+        )}
 
-        .close-btn {
-          position: absolute;
-          top: 10px;
-          right: 12px;
-          background: none;
-          border: none;
-          font-size: 30px;
-          cursor: pointer;
-        }
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            required
+          />
 
-        .popup-form input,
-        .popup-form textarea,
-        .popup-form select {
-          width: 100%;
-          padding: 12px;
-          margin-top: 12px;
-          border-radius: 8px;
-          border: 1px solid #ccc;
-          font-size: 15px;
-        }
+          <input
+            type="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        .popup-form textarea {
-          height: 90px;
-          resize: vertical;
-        }
+          <select
+            value={purpose}
+            onChange={(e) => setPurpose(e.target.value)}
+          >
+            <option>Hiring</option>
+            <option>Freelance Project</option>
+            <option>Collaboration</option>
+            <option>Other</option>
+          </select>
 
-        .submit-btn {
-          margin-top: 18px;
-          width: 100%;
-          padding: 12px;
-          background: #0070f3;
-          color: #fff;
-          font-size: 16px;
-          border: none;
-          border-radius: 8px;
-          cursor: pointer;
-        }
-
-        .submit-btn:hover {
-          background: #005ad1;
-        }
-
-        h2 {
-          text-align: center;
-          margin-bottom: 10px;
-        }
-      `}</style>
-
-      {/* POPUP UI */}
-      <div className="popup-overlay">
-        <div className="popup-box">
-          <button className="close-btn" onClick={onClose}>×</button>
-
-          <h2>Connect With Me</h2>
-
-          <form onSubmit={handleSubmit} className="popup-form">
-
-            <input
-              type="text"
-              name="fullName"
-              placeholder="Full Name"
-              onChange={handleChange}
-              required
-            />
-
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              onChange={handleChange}
-              required
-            />
-
-            <select name="purpose" onChange={handleChange} required>
-              <option value="">Select Purpose</option>
-              <option value="Hiring">Hiring</option>
-              <option value="Freelance Work">Freelance Work</option>
-              <option value="Other">Other</option>
-            </select>
-
-            {formData.purpose === "Other" && (
-              <textarea
-                name="description"
-                placeholder="Describe your purpose"
-                onChange={handleChange}
-                required
-              ></textarea>
-            )}
-
-            <button type="submit" className="submit-btn">
-              Submit
-            </button>
-
-          </form>
-        </div>
+          <button type="submit" disabled={loading}>
+            {loading ? "Submitting..." : "Submit"}
+          </button>
+        </form>
       </div>
-    </>
+    </div>
   );
 }
