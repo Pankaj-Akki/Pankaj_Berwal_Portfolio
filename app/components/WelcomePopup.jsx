@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function PopupForm({ open, onClose }) {
+export default function WelcomePopup({ open, onClose }) {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -26,10 +26,10 @@ export default function PopupForm({ open, onClose }) {
     const result = await response.json();
 
     if (result.success) {
-      alert("Form submitted successfully!");
+      alert("Your form has been submitted!");
       onClose();
     } else {
-      alert("Failed to submit.");
+      alert("Submission failed. Try again.");
     }
   };
 
@@ -49,7 +49,7 @@ export default function PopupForm({ open, onClose }) {
           display: flex;
           align-items: center;
           justify-content: center;
-          z-index: 1000;
+          z-index: 9999;
         }
 
         .popup-box {
@@ -58,23 +58,22 @@ export default function PopupForm({ open, onClose }) {
           padding: 25px;
           border-radius: 14px;
           position: relative;
-          animation: popupFade 0.3s ease;
+          animation: fadeIn 0.3s ease;
         }
 
-        @keyframes popupFade {
+        @keyframes fadeIn {
           from { transform: scale(0.8); opacity: 0; }
           to { transform: scale(1); opacity: 1; }
         }
 
         .close-btn {
           position: absolute;
-          top: 8px;
+          top: 10px;
           right: 12px;
-          font-size: 28px;
+          background: none;
           border: none;
-          background: transparent;
+          font-size: 30px;
           cursor: pointer;
-          color: #333;
         }
 
         .popup-form input,
@@ -98,19 +97,24 @@ export default function PopupForm({ open, onClose }) {
           width: 100%;
           padding: 12px;
           background: #0070f3;
-          border: none;
           color: #fff;
-          cursor: pointer;
-          border-radius: 8px;
           font-size: 16px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
         }
 
         .submit-btn:hover {
           background: #005ad1;
         }
+
+        h2 {
+          text-align: center;
+          margin-bottom: 10px;
+        }
       `}</style>
 
-      {/* POPUP CONTENT */}
+      {/* POPUP UI */}
       <div className="popup-overlay">
         <div className="popup-box">
           <button className="close-btn" onClick={onClose}>×</button>
@@ -135,11 +139,7 @@ export default function PopupForm({ open, onClose }) {
               required
             />
 
-            <select
-              name="purpose"
-              onChange={handleChange}
-              required
-            >
+            <select name="purpose" onChange={handleChange} required>
               <option value="">Select Purpose</option>
               <option value="Hiring">Hiring</option>
               <option value="Freelance Work">Freelance Work</option>
@@ -155,7 +155,10 @@ export default function PopupForm({ open, onClose }) {
               ></textarea>
             )}
 
-            <button type="submit" className="submit-btn">Submit</button>
+            <button type="submit" className="submit-btn">
+              Submit
+            </button>
+
           </form>
         </div>
       </div>
