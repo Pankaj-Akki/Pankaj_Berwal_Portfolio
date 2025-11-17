@@ -132,6 +132,14 @@ export default function WelcomePopup({ open, onClose }) {
           box-shadow: 0 12px 36px rgba(0,0,0,0.28);
           position: relative;
         }
+        .popup-box {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    background: linear-gradient(135deg, #ffffff0d, #fff0);
+    box-shadow: 0 8px 25px #00000040;
+    border: 1px solid rgba(255, 255, 255, .18);
+    z-index: 1000;    
+}
         .popup-box h2 {
           margin: 0 0 12px 0;
           text-align: center;
