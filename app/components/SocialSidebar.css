@@ -76,4 +76,7 @@
   .social-item:hover {
     text-decoration: none !important;
   }
-  
+  @media screen and (max-width:768px){
+      .social-sidebar{
+          z-index:1!important;
+      }}
