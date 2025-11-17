@@ -151,7 +151,9 @@ export default function WelcomePopup({ open, onClose }) {
   border-radius: 6px;
 }
 
-
+input::placeholder {
+    color: #ffffff !important;
+}
         .popup-box textarea { min-height: 90px; resize: vertical; }
 
         /* FINAL UPDATED BUTTON */
