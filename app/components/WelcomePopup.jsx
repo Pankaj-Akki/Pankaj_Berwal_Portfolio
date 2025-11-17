@@ -138,8 +138,12 @@ export default function WelcomePopup({ open, onClose }) {
   padding: 10px 12px;
   margin: 8px 0 12px 0;
 
-  background: #ffffff !important;     /* WHITE BG */
-  color: #000 !important;              /* BLACK TEXT */
+   -webkit-backdrop-filter: blur(12px)!important;
+          backdrop-filter: blur(12px)!important;
+          background: linear-gradient(135deg, #ffffff0d, #fff0)!important;
+          box-shadow: 0 8px 25px #00000040!important;
+          border: 1px solid rgba(255, 255, 255, .18)!important;
+  color: #fff !important;              /* BLACK TEXT */
   border: 1px solid #fff !important;   /* WHITE BORDER */
 
   font-size: 14px;
