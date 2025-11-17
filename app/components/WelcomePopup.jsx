@@ -4,15 +4,25 @@ export default function WelcomePopup({ open, onClose }) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [purpose, setPurpose] = useState("Hiring");
+
   const [message, setMessage] = useState("");
-  const [status, setStatus] = useState(""); 
+  const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false); // ⭐ controls hiding form
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setStatus("");
     setMessage("");
+    setStatus("");
+
+    // 🔒 Validate before sending
+    if (!fullName || !email) {
+      setStatus("error");
+      setMessage("❌ Please fill all fields.");
+      setLoading(false);
+      return;
+    }
 
     try {
       const res = await fetch(
@@ -32,22 +42,19 @@ export default function WelcomePopup({ open, onClose }) {
       if (data.success) {
         setStatus("success");
         setMessage("✔️ Submitted successfully!");
+        setSubmitted(true); // ⭐ hide the form
 
         setTimeout(() => {
           onClose();
-        }, 1200);
-
-        setFullName("");
-        setEmail("");
-        setPurpose("Hiring");
+        }, 1300);
       } else {
         setStatus("error");
         setMessage("❌ Something went wrong. Please try again.");
       }
 
-    } catch (error) {
+    } catch (err) {
       setStatus("error");
-      setMessage("❌ Network error — please try again.");
+      setMessage("❌ Network error. Try again.");
     }
 
     setLoading(false);
@@ -57,48 +64,23 @@ export default function WelcomePopup({ open, onClose }) {
 
   return (
     <>
-      {/* ⭐ POPUP CSS HERE — inside component */}
       <style>{`
         .popup-overlay {
           position: fixed;
-          top: 0;
-          left: 0;
-          height: 100vh;
-          width: 100vw;
+          top: 0; left: 0;
+          width: 100vw; height: 100vh;
           background: rgba(0,0,0,0.55);
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          display: flex; align-items: center; justify-content: center;
           z-index: 9999;
-          animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
         }
 
         .popup-box {
           background: #fff;
-          width: 90%;
-          max-width: 420px;
+          width: 90%; max-width: 420px;
           padding: 28px;
           border-radius: 14px;
           position: relative;
           box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-          animation: slideUp 0.28s ease;
-        }
-
-        @keyframes slideUp {
-          from { transform: translateY(40px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
-        }
-
-        .popup-box h2 {
-          text-align: center;
-          margin-bottom: 18px;
-          font-size: 22px;
-          font-weight: 600;
         }
 
         .popup-box input,
@@ -106,97 +88,85 @@ export default function WelcomePopup({ open, onClose }) {
           width: 100%;
           padding: 12px;
           margin-bottom: 15px;
-          border: 1px solid #ccc;
           border-radius: 8px;
-          font-size: 15px;
+          border: 1px solid #ccc;
         }
 
-        .popup-box button[type="submit"] {
+        .popup-box button.submit-btn {
           width: 100%;
           padding: 12px;
           background: #164DB3;
-          color: white;
           border: none;
-          border-radius: 8px;
+          color: #fff;
           font-size: 17px;
+          border-radius: 8px;
           cursor: pointer;
-          transition: 0.25s;
-        }
-
-        .popup-box button[type="submit"]:disabled {
-          opacity: 0.6;
-          cursor: not-allowed;
-        }
-
-        .popup-box button[type="submit"]:hover:not(:disabled) {
-          background: #0f3f8b;
         }
 
         .close-btn {
           position: absolute;
-          top: 12px;
           right: 12px;
+          top: 12px;
+          font-size: 26px;
           background: none;
           border: none;
-          font-size: 26px;
           cursor: pointer;
-          color: #555;
         }
       `}</style>
 
-      {/* ⭐ POPUP HTML */}
       <div className="popup-overlay">
         <div className="popup-box">
           <button className="close-btn" onClick={onClose}>×</button>
 
-          <h2>Welcome 👋</h2>
+          <h2 style={{ textAlign: "center", marginBottom: "18px" }}>
+            Welcome 👋
+          </h2>
 
-          {/* ⭐ Inline success/error message */}
+          {/* INLINE MESSAGE */}
           {message && (
             <p
               style={{
-                color: status === "success" ? "green" : "red",
                 textAlign: "center",
-                marginBottom: "10px",
+                color: status === "success" ? "green" : "red",
                 fontSize: "15px",
-                fontWeight: "500",
+                marginBottom: "10px",
               }}
             >
               {message}
             </p>
           )}
 
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Full Name"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              required
-            />
+          {/* ⭐ FORM HIDDEN AFTER SUCCESS */}
+          {!submitted && (
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Full Name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                required
+              />
 
-            <input
-              type="email"
-              placeholder="Email Address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
 
-            <select
-              value={purpose}
-              onChange={(e) => setPurpose(e.target.value)}
-            >
-              <option>Hiring</option>
-              <option>Freelance Project</option>
-              <option>Collaboration</option>
-              <option>Other</option>
-            </select>
+              <select value={purpose} onChange={(e) => setPurpose(e.target.value)}>
+                <option>Hiring</option>
+                <option>Freelance Project</option>
+                <option>Collaboration</option>
+                <option>Other</option>
+              </select>
 
-            <button type="submit" disabled={loading}>
-              {loading ? "Submitting..." : "Submit"}
-            </button>
-          </form>
+              <button className="submit-btn" disabled={loading}>
+                {loading ? "Submitting..." : "Submit"}
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </>
