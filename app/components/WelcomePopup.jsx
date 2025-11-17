@@ -125,9 +125,9 @@ export default function WelcomePopup({ open, onClose }) {
         }
         .popup-box {
           width: 92%;
-          max-width: 460px;
+          max-width: 500px;
           background: #fff;
-          border-radius: 12px;
+      
           padding: 22px;
           box-shadow: 0 12px 36px rgba(0,0,0,0.28);
           position: relative;
@@ -144,21 +144,22 @@ export default function WelcomePopup({ open, onClose }) {
           margin: 0 0 12px 0;
           text-align: center;
           font-size: 20px;
+          font-weight: 400;
         }
         .inline-msg {
           text-align: center;
           margin-bottom: 10px;
-          font-weight: 600;
+          font-weight: 400;
         }
-        .inline-msg.success { color: #0a8a2b; }
-        .inline-msg.error { color: #d23f3f; }
+        .inline-msg.success { color: #9cee69; }
+        .inline-msg.error { color: #9cee69; }
         .popup-box input,
         .popup-box select,
         .popup-box textarea {
           width: 100%;
           padding: 10px 12px;
           margin: 8px 0 12px 0;
-          border-radius: 8px;
+      
           border: 1px solid #ccc;
           font-size: 14px;
           box-sizing: border-box;
@@ -170,7 +171,8 @@ export default function WelcomePopup({ open, onClose }) {
           background: #164DB3;
           color: #fff;
           border: none;
-          border-radius: 8px;
+          border-style: solid;
+    box-shadow: 4px 3px #fff;
           font-weight: 600;
           cursor: pointer;
         }
