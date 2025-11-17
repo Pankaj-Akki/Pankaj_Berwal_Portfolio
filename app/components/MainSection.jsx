@@ -10,7 +10,7 @@ import WelcomePopup from "../components/WelcomePopup";
 export default function MainSection() {
   return (
     <>
-      <WelcomePopup />
+      <WelcomePopup open={open} onClose={() => setOpen(false)} />
       <CallSidebar />
       <SocialSidebar />
 
