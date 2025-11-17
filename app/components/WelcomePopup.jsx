@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-export default function WelcomePopup() {
-  const [show, setShow] = useState(false);
-  const [purpose, setPurpose] = useState("");
+export default function PopupForm({ open, onClose }) {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     purpose: "",
     description: "",
   });
-
-  useEffect(() => {
-    setShow(true); // Show popup every page load
-  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,109 +15,29 @@ export default function WelcomePopup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (
-      !formData.fullName ||
-      !formData.email ||
-      !formData.purpose ||
-      (formData.purpose === "Other" && !formData.description)
-    ) {
-      alert("Please fill all required fields.");
-      return;
-    }
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbwsHsQh87mBGWjOn_1B5JLHLCYJTNsjHn3ZU5qdS9uS55-yYgaSfLCd63W-INnZqU7S/exec",
+      {
+        method: "POST",
+        body: JSON.stringify(formData),
+      }
+    );
 
-    try {
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbwU_zTwgrpkngT4_hXqgOhEzvwt-c7IjIxA8tZO_YdmIe7MvIFziNaSlfiJdJePjXnu/exec",
-        {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
+    const result = await response.json();
 
-      alert("Your message has been sent!");
-      setShow(false);
-    } catch (err) {
-      alert("Failed to send. Try again.");
+    if (result.success) {
+      alert("Form submitted successfully!");
+      onClose();
+    } else {
+      alert("Failed to submit.");
     }
   };
 
-  if (!show) return null;
+  if (!open) return null;
 
   return (
-    <div>
-      {/* POPUP OVERLAY */}
-      <div className="popup-overlay" onClick={() => setShow(false)}></div>
-
-      {/* POPUP BOX */}
-      <div className="popup-box">
-        <button className="close-btn" onClick={() => setShow(false)}>✖</button>
-
-        <img
-          src="https://pankaj-berwal-portfolio.vercel.app/logo.png"
-          alt="Site Logo"
-          className="popup-logo"
-        />
-
-        <h2 className="popup-title">Connect With Me</h2>
-
-        <form onSubmit={handleSubmit} className="popup-form">
-          <label>Full Name *</label>
-          <input
-            type="text"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-            required
-          />
-
-          <label>Email *</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-
-          <label>Purpose *</label>
-          <select
-            name="purpose"
-            value={formData.purpose}
-            onChange={(e) => {
-              handleChange(e);
-              setPurpose(e.target.value);
-            }}
-            required
-          >
-            <option value="">Select</option>
-            <option value="Hiring">Hiring</option>
-            <option value="Freelance Work">Freelance Work</option>
-            <option value="Other">Other</option>
-          </select>
-
-          {/* Show extra field if Other selected */}
-          {purpose === "Other" && (
-            <>
-              <label>Description *</label>
-              <textarea
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-                rows="3"
-                required
-              ></textarea>
-            </>
-          )}
-
-          <button type="submit" className="submit-btn">
-            Submit
-          </button>
-        </form>
-      </div>
-
-      {/* CSS INSIDE COMPONENT */}
+    <>
+      {/* INLINE CSS */}
       <style>{`
         .popup-overlay {
           position: fixed;
@@ -131,90 +45,120 @@ export default function WelcomePopup() {
           left: 0;
           width: 100%;
           height: 100%;
-          background: rgba(0,0,0,0.5);
-          backdrop-filter: blur(3px);
-          z-index: 999;
+          background: rgba(0,0,0,0.6);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
         }
 
         .popup-box {
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background: #ffffff;
-          width: 90%;
-          max-width: 420px;
+          width: 400px;
+          background: #fff;
           padding: 25px;
-          border-radius: 12px;
-          z-index: 1000;
-          box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-          animation: fadeIn 0.3s ease;
+          border-radius: 14px;
+          position: relative;
+          animation: popupFade 0.3s ease;
         }
 
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translate(-50%, -48%); }
-          to   { opacity: 1; transform: translate(-50%, -50%); }
+        @keyframes popupFade {
+          from { transform: scale(0.8); opacity: 0; }
+          to { transform: scale(1); opacity: 1; }
         }
 
         .close-btn {
           position: absolute;
-          top: 10px;
+          top: 8px;
           right: 12px;
-          background: transparent;
+          font-size: 28px;
           border: none;
-          font-size: 20px;
+          background: transparent;
           cursor: pointer;
-        }
-
-        .popup-logo {
-          width: 70px;
-          display: block;
-          margin: 0 auto 10px;
-        }
-
-        .popup-title {
-          text-align: center;
-          margin-bottom: 15px;
-          font-size: 24px;
-          font-weight: bold;
           color: #333;
         }
 
-        .popup-form label {
-          font-weight: 600;
-          font-size: 14px;
-          margin-top: 10px;
-          display: block;
+        .popup-form input,
+        .popup-form textarea,
+        .popup-form select {
+          width: 100%;
+          padding: 12px;
+          margin-top: 12px;
+          border-radius: 8px;
+          border: 1px solid #ccc;
+          font-size: 15px;
         }
 
-        .popup-form input,
-        .popup-form select,
         .popup-form textarea {
-          width: 100%;
-          padding: 10px;
-          border-radius: 6px;
-          border: 1px solid #ccc;
-          margin-top: 5px;
-          font-size: 14px;
+          height: 90px;
+          resize: vertical;
         }
 
         .submit-btn {
-          margin-top: 15px;
+          margin-top: 18px;
           width: 100%;
           padding: 12px;
-          background: #9cee69;
+          background: #0070f3;
           border: none;
+          color: #fff;
+          cursor: pointer;
           border-radius: 8px;
           font-size: 16px;
-          font-weight: bold;
-          cursor: pointer;
-          color: #000;
         }
 
         .submit-btn:hover {
-          background: #85d85a;
+          background: #005ad1;
         }
       `}</style>
-    </div>
+
+      {/* POPUP CONTENT */}
+      <div className="popup-overlay">
+        <div className="popup-box">
+          <button className="close-btn" onClick={onClose}>×</button>
+
+          <h2>Connect With Me</h2>
+
+          <form onSubmit={handleSubmit} className="popup-form">
+
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Full Name"
+              onChange={handleChange}
+              required
+            />
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              onChange={handleChange}
+              required
+            />
+
+            <select
+              name="purpose"
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Purpose</option>
+              <option value="Hiring">Hiring</option>
+              <option value="Freelance Work">Freelance Work</option>
+              <option value="Other">Other</option>
+            </select>
+
+            {formData.purpose === "Other" && (
+              <textarea
+                name="description"
+                placeholder="Describe your purpose"
+                onChange={handleChange}
+                required
+              ></textarea>
+            )}
+
+            <button type="submit" className="submit-btn">Submit</button>
+          </form>
+        </div>
+      </div>
+    </>
   );
 }
