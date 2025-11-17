@@ -131,17 +131,22 @@ export default function WelcomePopup({ open, onClose }) {
         .inline-msg.success { color: #9cee69!important; }
         .inline-msg.error { color: #ff4d4d!important; }
 
-        .popup-box input,
-        .popup-box select,
-        .popup-box textarea {
-          width: 100%;
-          padding: 10px 12px;
-          margin: 8px 0 12px 0;
-          border: 1px solid #ccc;
-          font-size: 14px;
-          box-sizing: border-box;
-          border-radius: 6px;
-        }
+      .popup-box input,
+.popup-box select,
+.popup-box textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 8px 0 12px 0;
+
+  background: #ffffff !important;     /* WHITE BG */
+  color: #000 !important;              /* BLACK TEXT */
+  border: 1px solid #fff !important;   /* WHITE BORDER */
+
+  font-size: 14px;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+
 
         .popup-box textarea { min-height: 90px; resize: vertical; }
 
