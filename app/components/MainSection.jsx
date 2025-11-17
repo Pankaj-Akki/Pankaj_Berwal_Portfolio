@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import WelcomePopup from "./WelcomePopup";
 import JourneySection from "./JourneySection";
 import SkillsSection from "./SkillsSection";
 import FAQSection from "../components/FAQSection";
@@ -5,7 +7,7 @@ import Footer from "../components/Footer";
 import CallSidebar from "../components/CallSidebar";
 import SocialSidebar from "../components/SocialSidebar";
 import "./JourneySection.css";
-import WelcomePopup from "../components/WelcomePopup";
+
 
 export default function MainSection() {
   return (
