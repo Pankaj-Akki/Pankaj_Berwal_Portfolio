@@ -9,10 +9,10 @@ import SocialSidebar from "../components/SocialSidebar";
 import "./JourneySection.css";
 
 export default function MainSection() {
-  // ⛔ Start closed initially
+  // Popup initially closed
   const [open, setOpen] = useState(false);
 
-  // ⏳ Open popup after 4.5 seconds
+  // ⏳ Auto-open after 2.5 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       setOpen(true);
@@ -23,17 +23,17 @@ export default function MainSection() {
 
   return (
     <>
-      {/* ✅ Auto-opening popup */}
+      {/* Popup */}
       <WelcomePopup open={open} onClose={() => setOpen(false)} />
 
       <CallSidebar />
       <SocialSidebar />
 
-      {/* 🌟 Hero Section */}
       <main className="main-section">
         <div className="intro">
+
           <h2 className="text-3xl font-bold">
-            Hi, I'm <span style={{ color: '#9cee69' }}>Pankaj</span>{' '}
+            Hi, I'm <span style={{ color: "#9cee69" }}>Pankaj</span>{" "}
             <span className="inline-block animate-wave">👋</span>
           </h2>
 
@@ -76,12 +76,18 @@ export default function MainSection() {
               Download CV
             </a>
 
-            <a href="tel:9138427099" className="btn secondary">Contact Me</a>
+            {/* ⭐ TRIGGER POPUP ON CLICK */}
+            <button
+              className="btn secondary"
+              onClick={() => setOpen(true)}
+            >
+              Contact Me
+            </button>
           </div>
+
         </div>
       </main>
 
-      {/* Sections */}
       <JourneySection />
       <SkillsSection />
       <FAQSection />
