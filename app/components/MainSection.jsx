@@ -12,11 +12,11 @@ export default function MainSection() {
   // ⛔ Start closed initially
   const [open, setOpen] = useState(false);
 
-  // ⏳ Open popup after 2.5 seconds
+  // ⏳ Open popup after 4.5 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       setOpen(true);
-    }, 2500);
+    }, 4500);
 
     return () => clearTimeout(timer);
   }, []);
