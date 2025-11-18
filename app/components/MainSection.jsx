@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import JourneySection from "./JourneySection";
 import WelcomePopup from "./WelcomePopup";
 import SkillsSection from "./SkillsSection";
@@ -9,12 +9,21 @@ import SocialSidebar from "../components/SocialSidebar";
 import "./JourneySection.css";
 
 export default function MainSection() {
-  // ✅ Popup state (You forgot this earlier)
-  const [open, setOpen] = useState(true);
+  // ⛔ Start closed initially
+  const [open, setOpen] = useState(false);
+
+  // ⏳ Open popup after 2.5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setOpen(true);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
-      {/* ✅ Popup at top */}
+      {/* ✅ Auto-opening popup */}
       <WelcomePopup open={open} onClose={() => setOpen(false)} />
 
       <CallSidebar />
@@ -57,8 +66,7 @@ export default function MainSection() {
           </p>
 
           <div className="buttons">
-
-            {/* ✅ CV Download Button */}
+            {/* CV Download Button */}
             <a
               href="/PANKAJ-BERWAL-CV-2026.pdf"
               className="btn primary"
