@@ -1,8 +1,12 @@
 .education-section {
-  padding: 20px;
-  font-family: "Poppins", sans-serif;
-  color: #fff; /* white text for dark background */
+ padding: 10px 100px 50px;
+    color: #fff;
+    position: relative;
+    font-family: Sofia Pro, Poppins, sans-serif;
 }
+
+
+
 
 .section-title {
   font-size: 28px;
