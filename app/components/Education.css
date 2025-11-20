@@ -58,8 +58,7 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
-  /* Green glow */
-  box-shadow: 0px 0px 25px rgba(156, 238, 105, 0.25);
+
 
   /* Visible by default */
   opacity: 1;
@@ -70,7 +69,7 @@
 /* Soft highlight on hover */
 .education-card:hover {
   border-color: rgba(255,255,255,.1);
-  box-shadow: 0px 0px 35px rgba(156, 238, 105, 0.35);
+    box-shadow: 0 4px 20px #9cee6933;
 }
 
 /* -------------------------------
