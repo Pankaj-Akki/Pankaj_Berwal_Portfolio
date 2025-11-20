@@ -37,6 +37,35 @@
   border-radius: 8px;
   object-fit: cover;
 }
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.education-card {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  background: #f7f7f7;
+  align-items: flex-start;
+}
+
+.edu-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Responsive — 1 column on small screens */
+@media (max-width: 768px) {
+  .edu-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (max-width: 768px) {
    padding: 10px 20px 30px 20px;
