@@ -7,7 +7,12 @@
   position: relative;
   font-family: Sofia Pro, Poppins, sans-serif;
 }
-
+.education-card p{
+    font-size: 18px;
+}
+.education-card h3{
+font-size: 1.3rem;
+}
 /* Responsive padding */
 @media (max-width: 768px) {
   .education-section {
