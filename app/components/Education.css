@@ -1,42 +1,32 @@
+/* -------------------------------
+   MAIN SECTION
+--------------------------------*/
 .education-section {
- padding: 10px 100px 50px;
-    color: #fff;
-    position: relative;
-    font-family: Sofia Pro, Poppins, sans-serif;
+  padding: 10px 100px 50px;
+  color: #fff;
+  position: relative;
+  font-family: Sofia Pro, Poppins, sans-serif;
 }
 
+/* Responsive section padding */
+@media (max-width: 768px) {
+  .education-section {
+    padding: 10px 20px 30px;
+  }
+}
 
-
-
+/* -------------------------------
+   TITLES
+--------------------------------*/
 .section-title {
   font-size: 28px;
   margin-bottom: 15px;
   color: #ffffff;
 }
 
-.education-card {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background: #111;         /* dark card for black background */
-  border: 1px solid #333;   /* subtle border */
-  padding: 18px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  transition: 0.3s ease;
-}
-
-.education-card:hover {
-  border-color: #00aaff;
-  transform: translateY(-3px);
-}
-
-.edu-logo {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
-  object-fit: cover;
-}
+/* -------------------------------
+   2-COLUMN GRID
+--------------------------------*/
 .edu-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -44,32 +34,50 @@
   margin-bottom: 40px;
 }
 
-.education-card {
-  display: flex;
-  gap: 15px;
-  padding: 15px;
-  border-radius: 8px;
-  background: #f7f7f7;
-  align-items: flex-start;
-}
-
-.edu-logo {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-/* Responsive — 1 column on small screens */
+/* Responsive — 1 column */
 @media (max-width: 768px) {
   .edu-grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 768px) {
-   padding: 10px 20px 30px 20px;
-    color: #fff;
-    position: relative;
-    font-family: Sofia Pro, Poppins, sans-serif;
+/* -------------------------------
+   EDUCATION CARD (Merged with skill-card)
+--------------------------------*/
+.education-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  /* glass blur effect (from .skill-card) */
+  background: #ffffff0d;
+  border: 1px solid rgba(255,255,255,.1);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px #0000004d;
+
+  /* animation style from skill-card */
+  transform: translateY(40px);
+  opacity: 0;
+  transition: all .8s ease;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Hover effect */
+.education-card:hover {
+  border-color: #00aaff;
+  transform: translateY(-3px);
+  opacity: 1;   /* becomes visible on hover for subtle animation */
+}
+
+/* -------------------------------
+   LOGO
+--------------------------------*/
+.edu-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
 }
