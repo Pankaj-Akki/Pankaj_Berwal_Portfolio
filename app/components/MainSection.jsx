@@ -8,6 +8,7 @@ import CallSidebar from "../components/CallSidebar";
 import SocialSidebar from "../components/SocialSidebar";
 import "./JourneySection.css";
 import Education from "../components/Education";
+import "./Education.css";
 
 export default function MainSection() {
   // Popup initially closed
