@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import CallSidebar from "../components/CallSidebar";
 import SocialSidebar from "../components/SocialSidebar";
 import "./JourneySection.css";
+import Education from "../components/Education";
 
 export default function MainSection() {
   // Popup initially closed
@@ -87,7 +88,7 @@ export default function MainSection() {
 
         </div>
       </main>
-
+         <Education />
       <JourneySection />
       <SkillsSection />
       <FAQSection />
