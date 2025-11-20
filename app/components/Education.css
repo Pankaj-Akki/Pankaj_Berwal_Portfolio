@@ -8,7 +8,7 @@
   font-family: Sofia Pro, Poppins, sans-serif;
 }
 
-/* Responsive section padding */
+/* Responsive padding */
 @media (max-width: 768px) {
   .education-section {
     padding: 10px 20px 30px;
@@ -34,7 +34,7 @@
   margin-bottom: 40px;
 }
 
-/* Responsive — 1 column */
+/* 1 column on mobile */
 @media (max-width: 768px) {
   .edu-grid {
     grid-template-columns: 1fr;
@@ -42,34 +42,36 @@
 }
 
 /* -------------------------------
-   EDUCATION CARD (Merged with skill-card)
+   EDUCATION CARD (Glass + Green Glow)
 --------------------------------*/
 .education-card {
   display: flex;
   align-items: center;
   gap: 15px;
 
-  /* glass blur effect (from .skill-card) */
   background: #ffffff0d;
   border: 1px solid rgba(255,255,255,.1);
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 10px 25px #0000004d;
 
-  /* animation style from skill-card */
+  /* Glass blur */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  /* Green glow */
+  box-shadow: 0px 0px 25px rgba(156, 238, 105, 0.25);
+
+  /* Smooth fade/slide animation */
   transform: translateY(40px);
   opacity: 0;
   transition: all .8s ease;
-
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
 }
 
-/* Hover effect */
+/* Soft highlight on hover (no movement) */
 .education-card:hover {
-  border-color: #00aaff;
-  transform: translateY(-3px);
-  opacity: 1;   /* becomes visible on hover for subtle animation */
+  transform: translateY(40px); /* stays still */
+  border-color: rgba(255,255,255,.1); /* no color change */
+  box-shadow: 0px 0px 35px rgba(156, 238, 105, 0.35); /* brighter green glow */
 }
 
 /* -------------------------------
