@@ -61,17 +61,16 @@
   /* Green glow */
   box-shadow: 0px 0px 25px rgba(156, 238, 105, 0.25);
 
-  /* Smooth fade/slide animation */
-  transform: translateY(40px);
-  opacity: 0;
+  /* Visible by default */
+  opacity: 1;
+  transform: translateY(0);
   transition: all .8s ease;
 }
 
-/* Soft highlight on hover (no movement) */
+/* Soft highlight on hover */
 .education-card:hover {
-  transform: translateY(40px); /* stays still */
-  border-color: rgba(255,255,255,.1); /* no color change */
-  box-shadow: 0px 0px 35px rgba(156, 238, 105, 0.35); /* brighter green glow */
+  border-color: rgba(255,255,255,.1);
+  box-shadow: 0px 0px 35px rgba(156, 238, 105, 0.35);
 }
 
 /* -------------------------------
