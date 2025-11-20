@@ -1,0 +1,35 @@
+.education-section {
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  color: #fff; /* white text for dark background */
+}
+
+.section-title {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.education-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #111;         /* dark card for black background */
+  border: 1px solid #333;   /* subtle border */
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  transition: 0.3s ease;
+}
+
+.education-card:hover {
+  border-color: #00aaff;
+  transform: translateY(-3px);
+}
+
+.edu-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+}
