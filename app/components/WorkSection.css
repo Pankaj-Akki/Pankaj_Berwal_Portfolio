@@ -39,7 +39,7 @@
 /* IMAGE MASK */
 .image-frame {
   width: 100%;
-  height: 160px; /* window height */
+  height: 230px; /* window height */
   overflow: hidden;
   border-radius: 10px;
   position: relative;
