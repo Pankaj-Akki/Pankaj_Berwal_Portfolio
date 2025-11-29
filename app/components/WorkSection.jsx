@@ -1,7 +1,7 @@
 import React from "react";
 import "./WorkSection.css";
 
-const imagePath = "/jio.png"; // local image
+const imagePath = "/jio.png"; // your image from /public
 
 const projects = [
   {
@@ -36,7 +36,7 @@ const projects = [
   },
   {
     title: "Admin Dashboard",
-    description: "Analytics dashboard with charts, tables, permissions.",
+    description: "Analytics dashboard with charts and permissions.",
     tech: ["React", "Node.js"],
   },
   {
@@ -60,13 +60,12 @@ const WorkSection = () => {
         {projects.map((p, i) => (
           <div key={i} className="work-card">
 
-            {/* IMAGE FRAME */}
+            {/* IMAGE FRAME + ANIMATION */}
             <div className="image-frame">
               <img src={imagePath} alt={p.title} className="work-img" />
             </div>
 
             <h3 className="work-card-title">{p.title}</h3>
-
             <p className="work-description">{p.description}</p>
 
             <div className="tech-container">
