@@ -5,52 +5,80 @@ const projects = [
   {
     title: "Portfolio Website",
     image: "/projects/portfolio.png",
-    description: "A modern portfolio website built using React and CSS animations.",
-    tech: ["React", "CSS3", "Framer Motion"],
-    link: "#"
+    description: "A modern personal portfolio showcasing skills and experience.",
+    tech: ["React", "CSS", "JavaScript"],
   },
   {
     title: "E-commerce Store",
-    image: "/projects/store.png",
-    description: "A full-stack e-commerce store with payments and admin panel.",
-    tech: ["React", "Node.js", "MongoDB"],
-    link: "#"
+    image: "/projects/ecommerce.png",
+    description: "A complete e-commerce store with payment gateway integration.",
+    tech: ["Shopify", "PHP", "WooCommerce"],
+  },
+  {
+    title: "Business Website",
+    image: "/projects/business.png",
+    description: "Professional business website with SEO optimization.",
+    tech: ["WordPress", "Couch CMS", "PHP"],
+  },
+  {
+    title: "Landing Page",
+    image: "/projects/landing.png",
+    description: "High-converting marketing landing page design.",
+    tech: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    title: "Blog Platform",
+    image: "/projects/blog.png",
+    description: "SEO-friendly blog system with admin control panel.",
+    tech: ["WordPress", "PHP"],
+  },
+  {
+    title: "Shopify Store",
+    image: "/projects/shopify.png",
+    description: "Custom Shopify theme & product pages for brand identity.",
+    tech: ["Shopify", "Liquid"],
+  },
+  {
+    title: "Admin Dashboard",
+    image: "/projects/dashboard.png",
+    description: "Analytics dashboard with charts, tables, role permissions.",
+    tech: ["React", "Node.js"],
   },
   {
     title: "Chat App",
     image: "/projects/chat.png",
-    description: "Real-time chat application with WebSocket integration.",
-    tech: ["React", "Socket.io", "Express"],
-    link: "#"
+    description: "Real-time chat application with secure messaging.",
+    tech: ["Socket.io", "Node.js"],
+  },
+  {
+    title: "Company Profile",
+    image: "/projects/company.png",
+    description: "Clean company profile website for corporate branding.",
+    tech: ["WordPress", "PHP"],
   }
 ];
 
 const WorkSection = () => {
   return (
-    <div className="work-section">
+    <div className="work-wrapper">
       <h2 className="work-title">My Work</h2>
 
-      <div className="work-cards">
+      <div className="work-grid">
         {projects.map((p, i) => (
-          <div className="work-card" key={i}>
-            <div className="image-wrapper">
-              <img src={p.image} alt={p.title} className="project-image" />
+          <div key={i} className="work-card">
+            <img src={p.image} alt={p.title} className="work-img" />
+
+            <h3 className="work-card-title">{p.title}</h3>
+
+            <p className="work-description">{p.description}</p>
+
+            <div className="tech-container">
+              {p.tech.map((t, idx) => (
+                <span key={idx} className="tech-badge">{t}</span>
+              ))}
             </div>
 
-            <div className="card-details">
-              <h3>{p.title}</h3>
-              <p>{p.description}</p>
-
-              <div className="tech-list">
-                {p.tech.map((t, idx) => (
-                  <span key={idx} className="tech-item">{t}</span>
-                ))}
-              </div>
-
-              <a href={p.link} target="_blank" rel="noreferrer">
-                <button className="view-btn">View Project</button>
-              </a>
-            </div>
+            <button className="hire-btn">Hire Me</button>
           </div>
         ))}
       </div>
