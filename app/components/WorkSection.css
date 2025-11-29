@@ -39,7 +39,7 @@
 /* IMAGE FRAME (mask) */
 .image-frame {
   width: 100%;
-  height: 250px;
+  height: 160px;
   overflow: hidden;
   border-radius: 10px;
   background: #222;
@@ -49,6 +49,7 @@
 /* IMAGE (tall so it can slide fully) */
 .work-img {
   width: 100%;
+  height: 300px; /* ensures NO BLACK background */
   object-fit: cover;
   transform: translateY(0);
 }
