@@ -1,7 +1,7 @@
 import React from "react";
 import "./WorkSection.css";
 
-const imagePath = "/jio.png"; // image in public folder
+const imagePath = "/jio.png"; // local image
 
 const projects = [
   {
@@ -31,24 +31,24 @@ const projects = [
   },
   {
     title: "Shopify Store",
-    description: "Custom Shopify theme & product pages for brand identity.",
+    description: "Custom Shopify store with optimized UI and SEO.",
     tech: ["Shopify", "Liquid"],
   },
   {
     title: "Admin Dashboard",
-    description: "Analytics dashboard with charts, tables, role permissions.",
+    description: "Analytics dashboard with charts, tables, permissions.",
     tech: ["React", "Node.js"],
   },
   {
     title: "Chat App",
-    description: "Real-time chat application with secure messaging.",
+    description: "Realtime chat app with secure messaging.",
     tech: ["Socket.io", "Node.js"],
   },
   {
     title: "Company Profile",
-    description: "Clean company profile website for corporate branding.",
+    description: "Corporate website for brands and agencies.",
     tech: ["WordPress", "PHP"],
-  }
+  },
 ];
 
 const WorkSection = () => {
@@ -60,7 +60,7 @@ const WorkSection = () => {
         {projects.map((p, i) => (
           <div key={i} className="work-card">
 
-            {/* IMAGE WITH SLIDE EFFECT */}
+            {/* IMAGE FRAME */}
             <div className="image-frame">
               <img src={imagePath} alt={p.title} className="work-img" />
             </div>
