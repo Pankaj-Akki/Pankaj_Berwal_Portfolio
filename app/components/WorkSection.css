@@ -1,87 +1,94 @@
-.work-section {
-  padding: 50px 20px;
+.work-wrapper {
+  padding: 40px;
   text-align: center;
-  height: 100vh;
-  overflow-y: scroll; /* Cards stack and scroll */
+  background: #000;
+  min-height: 100vh;
 }
 
 .work-title {
-  font-size: 32px;
-  margin-bottom: 30px;
+  color: white;
+  font-size: 38px;
+  margin-bottom: 40px;
+  font-weight: 700;
 }
 
-.work-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: center;
+/* 3×3 Grid */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 20px;
 }
 
+/* Card */
 .work-card {
-  width: 320px;
-  height: 420px;
-  background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0px 6px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-  position: relative;
+  background: #111;
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  border: 1px solid #222;
+  transition: transform 0.3s ease;
 }
 
-/* Image container */
-.image-wrapper {
-  height: 240px;
-  overflow: hidden;
-}
-
-/* Hover animation: image slides up */
-.project-image {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  transition: transform 0.4s ease-in-out;
-}
-
-.work-card:hover .project-image {
-  transform: translateY(-20px);
-}
-
-/* Slide-up details */
-.card-details {
-  padding: 15px;
-  height: 180px;
-  transition: transform 0.4s ease-in-out;
-}
-
-.work-card:hover .card-details {
+.work-card:hover {
   transform: translateY(-10px);
 }
 
-.tech-list {
+/* Image */
+.work-img {
+  width: 100%;
+  height: 160px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #222;
+}
+
+/* Title */
+.work-card-title {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Description */
+.work-description {
+  font-size: 14px;
+  color: #cccccc;
+  margin: 10px 0 15px;
+}
+
+/* Tech badges like your screenshot */
+.tech-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin: 10px 0;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
-.tech-item {
-  background: #f0f0f0;
-  padding: 5px 10px;
-  border-radius: 8px;
-  font-size: 12px;
+.tech-badge {
+  padding: 8px 14px;
+  background: #1b2d1b;
+  border: 1px solid #5a7f5a;
+  border-radius: 6px;
+  font-size: 13px;
+  color: white;
 }
 
-.view-btn {
+/* Hire Me Button */
+.hire-btn {
   width: 100%;
   padding: 10px;
-  background: #007bff;
+  background: #0c4b0c;
   color: white;
-  border-radius: 6px;
-  border: none;
+  font-size: 15px;
+  border: 1px solid #2f7d2f;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.25s;
+  transition: 0.3s ease;
 }
 
-.view-btn:hover {
-  background: #0059c8;
+.hire-btn:hover {
+  background: #146814;
 }
