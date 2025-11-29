@@ -102,3 +102,9 @@
   font-size: 13px;
   color: white;
 }
+@media screen and (max-width:768px){
+.work-grid {
+
+    grid-template-columns: auto;
+  
+}}
