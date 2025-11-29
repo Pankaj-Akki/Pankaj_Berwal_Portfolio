@@ -38,12 +38,12 @@
 
 /* IMAGE FRAME (mask) */
 .image-frame {
-  width: 100%;
-  height: 160px;
-  overflow: hidden;
-  border-radius: 10px;
-  background: #222;
-  position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #222;
+    position: relative;
 }
 
 /* IMAGE (tall so it can slide fully) */
