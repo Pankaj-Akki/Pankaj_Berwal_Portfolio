@@ -7,8 +7,7 @@ import Footer from "../components/Footer";
 import CallSidebar from "../components/CallSidebar";
 import SocialSidebar from "../components/SocialSidebar";
 import "./JourneySection.css";
-import Education from "../components/Education";
-import "./Education.css";
+
 import WorkSection from "./WorkSection";
 
 
@@ -92,7 +91,6 @@ export default function MainSection() {
         </div>
       </main>
       <WorkSection />
-         <Education />
       <JourneySection />
       <SkillsSection />
       <FAQSection />
