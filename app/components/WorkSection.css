@@ -1,3 +1,4 @@
+/* MAIN WRAPPER */
 .work-wrapper {
   padding: 40px;
   text-align: center;
@@ -12,7 +13,7 @@
   font-weight: 700;
 }
 
-/* 3×3 Grid */
+/* GRID (3×3) */
 .work-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -20,7 +21,7 @@
   padding: 20px;
 }
 
-/* Card */
+/* CARD */
 .work-card {
   background: #111;
   border-radius: 15px;
@@ -32,39 +33,58 @@
 }
 
 .work-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
 }
 
-/* Image */
-.work-img {
+/* IMAGE WINDOW FRAME (mask) */
+.image-frame {
   width: 100%;
-  height: 160px;
+  height: 160px; /* only top of image shows */
+  overflow: hidden;
   border-radius: 10px;
-  object-fit: cover;
+  position: relative;
   background: #222;
 }
 
-/* Title */
+/* IMAGE */
+.work-img {
+  width: 100%;
+  height: 240px; /* larger than frame so it can slide */
+  object-fit: cover;
+
+  /* default image position */
+  transform: translateY(0);
+
+  /* smooth up & down animation */
+  transition: transform 0.6s ease-in-out;
+}
+
+/* ON HOVER IMAGE SLIDES UP */
+.work-card:hover .work-img {
+  transform: translateY(-60px);
+}
+
+/* TITLE */
 .work-card-title {
   margin-top: 15px;
   font-size: 20px;
   font-weight: 600;
 }
 
-/* Description */
+/* DESCRIPTION */
 .work-description {
   font-size: 14px;
   color: #cccccc;
   margin: 10px 0 15px;
 }
 
-/* Tech badges like your screenshot */
+/* TECH BADGES */
 .tech-container {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-top: 10px;
 }
 
 .tech-badge {
@@ -74,21 +94,4 @@
   border-radius: 6px;
   font-size: 13px;
   color: white;
-}
-
-/* Hire Me Button */
-.hire-btn {
-  width: 100%;
-  padding: 10px;
-  background: #0c4b0c;
-  color: white;
-  font-size: 15px;
-  border: 1px solid #2f7d2f;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.hire-btn:hover {
-  background: #146814;
 }
