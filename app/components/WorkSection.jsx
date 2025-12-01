@@ -1,53 +1,60 @@
 import React from "react";
 import "./WorkSection.css";
 
-const imagePath = "/jio.png"; // your image from /public
-
 const projects = [
   {
     title: "Portfolio Website",
     description: "A modern personal portfolio showcasing skills and experience.",
     tech: ["React", "CSS", "JavaScript"],
+    image: "/work/portfolio.png",
   },
   {
     title: "E-commerce Store",
     description: "A complete e-commerce store with payment gateway integration.",
     tech: ["Shopify", "PHP", "WooCommerce"],
+    image: "/work/ecommerce.png",
   },
   {
     title: "Business Website",
     description: "Professional business website with SEO optimization.",
     tech: ["WordPress", "Couch CMS", "PHP"],
+    image: "/work/business.png",
   },
   {
     title: "Landing Page",
     description: "High-converting marketing landing page design.",
     tech: ["HTML", "CSS", "JavaScript"],
+    image: "/work/landing.png",
   },
   {
     title: "Blog Platform",
     description: "SEO-friendly blog system with admin control panel.",
     tech: ["WordPress", "PHP"],
+    image: "/work/blog.png",
   },
   {
     title: "Shopify Store",
     description: "Custom Shopify store with optimized UI and SEO.",
     tech: ["Shopify", "Liquid"],
+    image: "/work/shopify.png",
   },
   {
     title: "Admin Dashboard",
     description: "Analytics dashboard with charts and permissions.",
     tech: ["React", "Node.js"],
+    image: "/work/dashboard.png",
   },
   {
     title: "Chat App",
     description: "Realtime chat app with secure messaging.",
     tech: ["Socket.io", "Node.js"],
+    image: "/work/chat.png",
   },
   {
     title: "Company Profile",
     description: "Corporate website for brands and agencies.",
     tech: ["WordPress", "PHP"],
+    image: "/work/company.png",
   },
 ];
 
@@ -60,9 +67,8 @@ const WorkSection = () => {
         {projects.map((p, i) => (
           <div key={i} className="work-card">
 
-            {/* IMAGE FRAME + ANIMATION */}
             <div className="image-frame">
-              <img src={imagePath} alt={p.title} className="work-img" />
+              <img src={p.image} alt={p.title} className="work-img" />
             </div>
 
             <h3 className="work-card-title">{p.title}</h3>
