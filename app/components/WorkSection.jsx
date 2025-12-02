@@ -36,7 +36,7 @@ const projects = [
     title: "Shopify Store",
     description: "Custom Shopify store with optimized UI and SEO.",
     tech: ["Shopify", "Liquid"],
-    image: "/work/shopify.png",
+    image: "/indiyumstore.webp",
   },
   {
     title: "Admin Dashboard",
