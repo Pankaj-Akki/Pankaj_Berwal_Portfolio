@@ -54,7 +54,7 @@ const projects = [
     title: "Company Profile",
     description: "Corporate website for brands and agencies.",
     tech: ["WordPress", "PHP"],
-    image: "/work/company.png",
+    image: "/kemexel.webp",
   },
 ];
 
