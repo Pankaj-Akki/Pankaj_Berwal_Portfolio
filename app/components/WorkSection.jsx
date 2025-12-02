@@ -57,10 +57,10 @@ const projects = [
     image: "/kemexel.webp",
   },
    {
-    title: "Kemexel",
-    description: "Corporate website for brands and agencies.",
-    tech: ["WordPress", "PHP"],
-    image: "/kemexel.webp",
+    title: "JNI Wholesale",
+    description: "E-commerce website for brands and agencies.",
+    tech: ["Shopify"],
+    image: "/jniwholesale.webp",
   },
    {
     title: "Kemexel",
