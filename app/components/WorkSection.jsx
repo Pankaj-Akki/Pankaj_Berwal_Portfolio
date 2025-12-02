@@ -42,13 +42,13 @@ const projects = [
     title: "Admin Dashboard",
     description: "Analytics dashboard with charts and permissions.",
     tech: ["React", "Node.js"],
-    image: "/work/dashboard.png",
+    image: "/pathankotfruitcompany.webp",
   },
   {
     title: "Chat App",
     description: "Realtime chat app with secure messaging.",
     tech: ["Socket.io", "Node.js"],
-    image: "/work/chat.png",
+    image: "/dodgeprogram.webp",
   },
   {
     title: "Company Profile",
