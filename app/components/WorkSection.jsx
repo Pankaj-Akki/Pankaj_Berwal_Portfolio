@@ -107,7 +107,7 @@ const projects = [
     title: "Kemexel",
     description: "Corporate website for brands and agencies.",
     tech: ["WordPress", "PHP"],
-    image: "/kemexel.webp",
+    image: "/tekrevol.webp",
   },
 ];
 
