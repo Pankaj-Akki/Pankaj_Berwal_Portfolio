@@ -92,10 +92,10 @@ const projects = [
     image: "/kemexel.webp",
   },
    {
-    title: "Kemexel",
-    description: "Corporate website for brands and agencies.",
+    title: "Noire Dispensary",
+    description: "Noire website for Weed and CBD.",
     tech: ["WordPress", "PHP"],
-    image: "/kemexel.webp",
+    image: "/noiredispensary.webp",
   },
    {
     title: "Fusion Saloon",
