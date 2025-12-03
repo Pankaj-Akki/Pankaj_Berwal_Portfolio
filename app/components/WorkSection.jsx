@@ -69,29 +69,6 @@ const projects = [
     image: "/mobimonster.webp",
   },
    {
-    title: "Kemexel",
-    description: "Corporate website for brands and agencies.",
-    tech: ["WordPress", "PHP"],
-    image: "/kemexel.webp",
-  },
-   {
-    title: "Kemexel",
-    description: "Corporate website for brands and agencies.",
-    tech: ["WordPress", "PHP"],
-    image: "/kemexel.webp",
-  },
-   {
-    title: "Kemexel",
-    description: "Corporate website for brands and agencies.",
-    tech: ["WordPress", "PHP"],
-    image: "/kemexel.webp",
-  }, {
-    title: "Kemexel",
-    description: "Corporate website for brands and agencies.",
-    tech: ["WordPress", "PHP"],
-    image: "/kemexel.webp",
-  },
-   {
     title: "Noire Dispensary",
     description: "Noire website for Weed and CBD.",
     tech: ["WordPress", "PHP"],
